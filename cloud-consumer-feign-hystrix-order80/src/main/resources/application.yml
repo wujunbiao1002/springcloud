@@ -1,0 +1,40 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: cloud-consumer-hystrix-order
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+# feign 默认的连接超时10s，响应超时60s 开启了hystrix后失效，进行服务降级超时时间为1秒（HystrixCommandProperties）
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000 # feign连接建立的超时时长
+        readTimeout: 5000 # feign处理请求的超时时间
+        loggerLevel: full # feign请求详细日志
+
+#修改hystrix进行服务降级超时时间>=（feign.connectTimeout+feign.readTimeout）
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000 # 请求处理超时时间hystrix进行服务降级
+
+logging:
+  level:
+    # feign日志以什么级别监控哪个接口
+    com.wjb.springcloud.service.PaymentHystrixService: debug
