@@ -1,0 +1,17 @@
+server:
+  port: 8801
+
+spring:
+  application:
+    name: cloud-stream-provider
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: root
+    password: 12345678
+  cloud:
+    stream:
+      bindings: # 服务的整合处理
+        output: # 这个名字是一个通道的名称会注入到容器中  @Resource private MessageChannel output;
+          destination: streamExchange # 表示要使用的Exchange名称定义
+          content-type: application/json # 设置消息类型，本次为json，文本则设置“text/plain”
