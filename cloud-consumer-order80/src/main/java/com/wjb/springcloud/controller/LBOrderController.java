@@ -48,10 +48,4 @@ public class LBOrderController {
         return new CommonResult(200, "成功", restTemplate.getForObject(uri + "/payment/lb", String.class));
 
     }
-
-    // ====================> zipkin+sleuth
-    @GetMapping("/consumer/payment/zipkin")
-    public CommonResult paymentZipkin() {
-        return new CommonResult(200, "成功", restTemplate.getForObject("http://localhost:8001" + "/payment/zipkin/", String.class));
-    }
 }

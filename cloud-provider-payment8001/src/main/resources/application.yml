@@ -19,6 +19,11 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/springcloud?useUnicode=true&characterEncoding=utf-8&useSSL=false
     username: root
     password: 12345678
+  zipkin:
+    base-url: http://127.0.0.1:9411
+  sleuth:
+    sampler:
+      probability: 1 #采样率值介于 0 到 1 之间，1 则表示全部采集
 
 mybatis:
   mapperLocations: classpath:mapper/*.xml
