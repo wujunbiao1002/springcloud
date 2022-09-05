@@ -8,7 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848 #配置Nacos地址
-        namespace: spring-cloud-dev-id
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
 
 management:
   endpoints:

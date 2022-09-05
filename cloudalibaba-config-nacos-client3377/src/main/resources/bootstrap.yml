@@ -3,15 +3,17 @@ server:
 
 spring:
   profiles:
-    active: test
+    active: dev
   application:
     name: nacos-config-client
   cloud:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yaml
-        namespace: spring-cloud-test-id
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
         group: local

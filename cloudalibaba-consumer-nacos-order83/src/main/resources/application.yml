@@ -8,7 +8,8 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
-        namespace: spring-cloud-dev-id
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
 
 #消费者将要去访问的微服务名称(注册成功进nacos的微服务提供者)
 service-url:
