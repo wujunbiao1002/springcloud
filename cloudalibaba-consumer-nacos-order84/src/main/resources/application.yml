@@ -1,0 +1,23 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8858
+
+service-url:
+  nacos-payment-provider: http://nacos-payment-provider
+
+# 激活sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true

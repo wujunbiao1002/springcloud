@@ -1,0 +1,84 @@
+server:
+  port: 8401
+spring:
+  application:
+    name: cloud-alibaba-sentinel-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      datasource:
+        # 流控规则
+        ds-flow:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+            group-id: local
+            data-id: ${spring.application.name}-flow-rules
+            data-type: json
+            rule-type: flow
+            #[
+            #    {
+            #        "resource": "/rateLimit/byUrl",
+            #        "limitApp": "default",
+            #        "grade": 1,
+            #        "count": 1,
+            #        "strategy": 0,
+            #        "controlBehavior": 0,
+            #        "clusterMode": false
+            #    }
+            #]
+        # 降级规则
+        ds-degrade:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+            group-id: local
+            data-id: ${spring.application.name}-degrade-rules
+            data-type: json
+            rule-type: degrade
+            #[
+            #    {
+            #        "resource":"byResource",
+            #        "grade":"2",
+            #        "count":"1",
+            #        "timeWindow":"1"
+            #    }
+            #]
+        # 热点规则
+        ds-param:
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+            group-id: local
+            data-id: ${spring.application.name}-param-flow-rules
+            data-type: json
+            rule-type: param-flow
+            #[
+            #    {
+            #        "resource": "testHotKey",
+            #        "count": "1",
+            #        "grade": "1",
+            #        "durationInSec": "1",
+            #        "controlBehavior": "0",
+            #        "maxQueueingTimeMs": "20000",
+            #        "paramIdx": "0",
+            #        "paramFlowItemList": [
+            #            {
+            #                "object": 1,
+            #                "count": 10,
+            #                "classType": "java.lang.String"
+            #            }
+            #        ]
+            #    }
+            #]
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

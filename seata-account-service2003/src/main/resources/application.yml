@@ -1,0 +1,28 @@
+server:
+  port: 2003
+
+spring:
+  application:
+    name: seata-account-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 09c599cc-aff7-482c-9674-756a275fa3b6
+        group: local
+    alibaba:
+      seata:
+        tx-service-group: seata_tx_group # seata配置的事务组
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.109:3307/account_db
+    username: root
+    password: 12345678
+
+logging:
+  level:
+    io:
+      seata: info
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
