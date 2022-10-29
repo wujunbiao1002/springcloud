@@ -2,7 +2,6 @@ package com.wjb.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * <b><code>${NAME}</code></b>
@@ -16,7 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @since ${PROJECT_NAME} ${PROJECT_VERSION}
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 public class PaymentMain9004 {
     public static void main(String[] args) {
         SpringApplication.run(PaymentMain9004.class, args);

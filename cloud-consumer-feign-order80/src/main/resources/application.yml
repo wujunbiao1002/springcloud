@@ -7,7 +7,7 @@ eureka:
     prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+      defaultZone: http://127.0.0.1:7001/eureka
     register-with-eureka: true
 # 设置feign客户端（openFeign默认支持ribbon）
 ribbon:
